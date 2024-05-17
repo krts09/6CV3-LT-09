@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,3 +124,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "cyborg"
+}
+
+JAZZMIN_SETTINGS = {
+    "site_title": "TESCOM",
+    "site_header": "TESCOM",
+    "site_logo": "resources/Logo_Ttescom.png",
+    "site_brand": "TESCOM",
+    "welcome_sign": "Bienvenido al panel de administradores de TESCOM",
+    "show_ui_builder": False,
+}
