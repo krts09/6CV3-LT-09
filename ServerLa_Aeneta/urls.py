@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from TESCOM_MAIN.views import login_alumno, forgot_password, up_protocol
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', login_alumno, name='login'),
+    path('forgot-password/', forgot_password, name='forgot-password'),
+    path('up-protocol/', up_protocol, name='up-protocol'),
 ]

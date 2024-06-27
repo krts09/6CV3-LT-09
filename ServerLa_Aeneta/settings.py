@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os.path
+from os.path import join
 from pathlib import Path
 import TESCOM_MAIN
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'ServerLa_Aeneta.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [join(BASE_DIR, 'TESCOM/pages/sign-in/'), join(BASE_DIR, 'TESCOM/pages/upload-protocol'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

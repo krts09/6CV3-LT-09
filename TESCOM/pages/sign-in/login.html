@@ -204,9 +204,9 @@
       <button class="btn btn-primary w-100 py-2" type="submit">Iniciar sesión</button>
       <hr>
       <div class="text-center">
-        <a class="small" href="../upload-protocol/up-protocol.html">Subir Protocolo</a>
+        <a class="small" href="{% url 'up-protocol' %}">Subir Protocolo</a>
         |
-        <a class="small" href="forgot-password.html">¿Ha olvidado su contraseña?</a>
+        <a class="small" href="{% url 'forgot-password' %}">¿Ha olvidado su contraseña?</a>
       </div>
       <p class="mt-5 mb-3 text-body-secondary" style="text-align: center;">&copy; 2024</p>
     </form>
