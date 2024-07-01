@@ -3,6 +3,7 @@ from TESCOM_MAIN.models import *
 
 # Register your models here.
 
+
 @admin.register(HorarioDisponible)
 class HorarioDisponibleAdmin(admin.ModelAdmin):
     # list_display = ('profesor', 'dia_semana', 'horario_inicio', 'horario_fin')
@@ -22,7 +23,8 @@ class AlumnoAdmin(admin.ModelAdmin):
 
 @admin.register(TrabajoTerminal)
 class TrabajoTerminalAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['tt_id', 'titulo', 'alumno']
+    filter_horizontal = ['profesores']
 
 
 @admin.register(AlumnoTrabajoTerminal)
