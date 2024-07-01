@@ -1,4 +1,5 @@
 from django.db import models
+#from django.db import models
 
 # Create your models here.
 
@@ -77,3 +78,19 @@ class Observaciones(models.Model):
 
     def __str__(self):
         return f'Observación de {self.profesor} sobre {self.trabajo_terminal} el {self.fecha}'
+
+class MarcadorTiempo(models.Model):
+    # Definición de otros campos que puedan ser comunes
+    creado = models.DateTimeField(auto_now_add=True)
+    actualizado = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+class Agenda(MarcadorTiempo):
+    # Otros campos de la agenda
+    nombre = models.CharField(max_length=100)  # Ejemplo de otro campo
+    fecha_separacion = models.DateField(null=False, blank=False, verbose_name='Fecha de Separación')
+
+    def __str__(self):
+        return self.nombre
