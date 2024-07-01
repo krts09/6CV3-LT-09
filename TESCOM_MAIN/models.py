@@ -13,16 +13,6 @@ class Alumno(models.Model):
         return f'{self.nombre} {self.apellido_paterno} {self.apellido_materno}'
 
 
-class TrabajoTerminal(models.Model):
-    tt_id = models.IntegerField(primary_key=True)
-    titulo = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100)
-    calificacion = models.DecimalField(max_digits=3, decimal_places=1)
-
-    def __str__(self):
-        return self.titulo
-
-
 class Profesor(models.Model):
     profesor_id = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=20)
@@ -34,12 +24,28 @@ class Profesor(models.Model):
         return f'{self.apellido_paterno} {self.nombre} {self.rol}'
 
 
+class TrabajoTerminal(models.Model):
+    tt_id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=100)
+    calificacion = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    archivo = models.FileField(upload_to='trabajos_terminales/', default='trabajos_terminales/Protocolo.pdf')
+    alumno = models.ForeignKey(Alumno,on_delete=models.CASCADE)
+    profesores = models.ManyToManyField(Profesor, related_name='trabajos_terminales')
+
+    def __str__(self):
+        return self.titulo
+
+
 class AlumnoTrabajoTerminal(models.Model):
     alumno_id = models.ForeignKey(Alumno, on_delete=models.CASCADE)
     trabajo_terminal = models.ForeignKey(TrabajoTerminal, on_delete=models.CASCADE)
-
     class Meta:
         unique_together = ('alumno_id', 'trabajo_terminal')
+
+    def __str__(self):
+        return f'{self.trabajo_terminal} - {self.alumno_id}'
+
 
 
 class HorarioDisponible(models.Model):
