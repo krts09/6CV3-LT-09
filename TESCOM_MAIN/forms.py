@@ -1,9 +1,5 @@
 from django import forms
-<<<<<<< Updated upstream
 
-class FechaForm(forms.Form):
-    fecha = forms.DateField(required=False, widget=forms.DateInput(format='%Y-%m-%d'))
-=======
 from .models import TrabajoTerminal, Profesor
 
 
@@ -18,4 +14,6 @@ class TrabajoTerminalForm(forms.ModelForm):
     class Meta:
         model = TrabajoTerminal
         fields = ['tt_id', 'titulo', 'descripcion', 'archivo', 'profesores']
->>>>>>> Stashed changes
+
+class FechaForm(forms.Form):
+    fecha = forms.DateField(required=False, widget=forms.DateInput(format='%Y-%m-%d'))
