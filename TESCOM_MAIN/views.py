@@ -1,16 +1,14 @@
-<<<<<<< Updated upstream
 from django.shortcuts import render
 from datetime import date, datetime
 from django.views.generic import ListView
 from .models import Agenda
 from .forms import FechaForm
 
-=======
 from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
 from .forms import TrabajoTerminalForm
 from .models import Alumno, TrabajoTerminal, AlumnoTrabajoTerminal
->>>>>>> Stashed changes
+
 
 # Create your views here.
 
@@ -27,9 +25,8 @@ def forgot_password(request):
 
 
 def up_protocol(request):
-<<<<<<< Updated upstream
     return render(request, "up-protocol.html")
-
+"""
 class AgendaGeneralListView(ListView):
     model = Agenda
     paginate_by = 100
@@ -49,7 +46,7 @@ class AgendaGeneralListView(ListView):
             if fecha:
                 return queryset.filter(fecha_separacion=fecha)
         return queryset.filter(fecha_separacion=date.today())
-=======
+
     if request.method == 'POST':
         form = TrabajoTerminalForm(request.POST, request.FILES)
         alumno_id = request.POST.get('alumno_id')
@@ -57,7 +54,7 @@ class AgendaGeneralListView(ListView):
             alumno = Alumno.objects.get(alumno_id=alumno_id)
         except Alumno.DoesNotExist:
             form.add_error('alumno_id', 'Numero de Boleta Incorrecto.')
-            return render(request, 'up-protocol.html', {'form':form})
+            #return render(request, 'up-protocol.html', {'form':form})
 
         if form.is_valid():
             trabajo_terminal = form.save(commit=False)
@@ -65,9 +62,9 @@ class AgendaGeneralListView(ListView):
             trabajo_terminal.save()
             form.save_m2m()
             AlumnoTrabajoTerminal.objects.create(alumno_id=alumno, trabajo_terminal=trabajo_terminal)
-            return redirect('success')
+            #return redirect('success')
     else:
         form = TrabajoTerminalForm()
-    return render(request, 'up-protocol.html', {'form': form})
+    #return render(request, 'up-protocol.html', {'form': form})
 
->>>>>>> Stashed changes
+"""
